@@ -1,0 +1,172 @@
+{% load static %}
+<style>
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Full Page Centering */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+/* Registration Box */
+.register-box {
+    display: flex;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 800px;
+    transition: 0.3s;
+}
+
+.register-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Left Side - Form */
+.register-form {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.register-form h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.register-form label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #444;
+    display: block;
+    margin-top: 12px;
+}
+
+.register-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.register-form input:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.4);
+}
+
+/* Register Button */
+.register-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    background: linear-gradient(45deg, #4facfe, #00c6ff);
+    color: white;
+    font-size: 17px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    background: linear-gradient(45deg, #0072ff, #00c6ff);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(79, 172, 254, 0.5);
+}
+
+/* Right Side - Illustration */
+.register-illustration {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-illustration img {
+    width: 100%;
+    max-width: 270px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Already a Member */
+.already-member {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+.already-member a {
+    color: #0072ff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.already-member a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .register-box {
+        flex-direction: column;
+        width: 90%;
+        padding: 2rem;
+    }
+
+    .register-form {
+        padding-right: 0;
+    }
+
+    .register-illustration img {
+        display: none;
+    }
+}
+</style>
+
+<div class="register-container">
+    <div class="register-box">
+        <!-- Left: Form -->
+        <div class="register-form">
+            <h2>Create Your Account</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="username">User Name:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" class="register-btn">Register</button>
+            </form>
+            <p class="already-member">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+        </div>
+
+        <!-- Right: Illustration -->
+        
+    </div>
+</div>
+
+
+
